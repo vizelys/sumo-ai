@@ -3,6 +3,9 @@
 Two AI fighters learn sumo by playing against each other (reinforcement learning + self-play)
 in Unity with ML-Agents. Built to be trained on a MacBook Pro M3 Pro.
 
+New to reinforcement learning, or rusty? Read **[LEARN.md](LEARN.md)**: what the AI is
+actually doing, the rewards, the loss, PPO and self-play, explained with this project's code.
+
 ```
 sumo-ai/
 ├── Assets/Scripts/
