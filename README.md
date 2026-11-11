@@ -7,7 +7,9 @@ in Unity with ML-Agents. Built to be trained on a MacBook Pro M3 Pro.
 sumo-ai/
 ├── Assets/Scripts/
 │   ├── SumoAgent.cs   # the fighter: senses, actions, manual controls
-│   └── SumoArena.cs   # the referee: ring-outs, rewards, round reset, scoreboard
+│   ├── SumoArena.cs   # the referee: ring-outs, rewards, round reset, scoreboard
+│   └── Editor/
+│       └── SumoSceneBuilder.cs  # "Sumo" menu: builds the whole scene in one click
 └── config/
     └── sumo.yaml      # training settings (PPO + self-play)
 ```
@@ -41,7 +43,19 @@ If `pip install mlagents` fails on `grpcio` or `numpy`, run `conda install grpci
 
 ---
 
-## 2. Build the scene (≈ 20 minutes)
+## 2. Build the scene
+
+### ⚡ One click (recommended)
+
+In Unity's top menu bar: **Sumo → Build Scene (1 arena - test and record)**.
+That's it: ring, fighters, eyes, every ML-Agents setting and the camera are created and the
+scene is saved as `Assets/Scenes/Sumo.unity`.
+For training, use **Sumo → Build Scene (12 arenas - training)** (saved as `Sumo Training.unity`).
+
+Then skip to **step 3**. The manual steps below explain what the button does, if you're curious
+or want to change something.
+
+### By hand (≈ 20 minutes)
 
 Create this hierarchy (*right-click in Hierarchy → 3D Object / Create Empty*):
 
@@ -103,9 +117,9 @@ If the keys do nothing on Unity 6: *Edit → Project Settings → Player → Act
 
 ### Quick start (inside the Editor)
 
-1. Turn **Arena** into a prefab (drag it into the Project window).
-2. Duplicate it **12 times**, spaced 20 units apart (e.g. x = 0, 20, 40… and z = 0, 20, 40…).
+1. Open the training scene (**Sumo → Build Scene (12 arenas - training)**).
    More arenas = more fights per second = faster learning.
+   (Building by hand? Turn **Arena** into a prefab and duplicate it 12 times, 20 units apart.)
 3. In Terminal:
    ```bash
    conda activate mlagents
